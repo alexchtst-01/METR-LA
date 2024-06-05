@@ -5,8 +5,15 @@ file_name = "METR-LA.h5"
 
 data = h5.File(file_name, 'r')
 
-print(data.keys())
-
 with pd.HDFStore(file_name, 'r') as d:
     df = d.get('df')
     df.to_csv("metr-la.csv")
+
+df = pd.read_csv('metr-la.csv')
+df['Time'] = pd.to_datetime(df['Time'])
+col = list(df.columns)
+
+for i in col[1:]:
+    data = df[['Time', i]]
+    data.to_csv(f'data/{i}.csv')
+    print(i, 'has been downloaded')
