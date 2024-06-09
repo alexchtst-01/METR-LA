@@ -9,11 +9,14 @@ with pd.HDFStore(file_name, 'r') as d:
     df = d.get('df')
     df.to_csv("metr-la.csv")
 
+# bikin dulu folder raw_data
+
+path = "raw_data"
 df = pd.read_csv('metr-la.csv')
 df['Time'] = pd.to_datetime(df['Time'])
 col = list(df.columns)
 
 for i in col[1:]:
     data = df[['Time', i]]
-    data.to_csv(f'data/{i}.csv')
-    print(i, 'has been downloaded')
+    data.to_csv(f'{path}/{i}.csv', index=False)
+    print(f'{path}/{i}.csv', 'has been created')

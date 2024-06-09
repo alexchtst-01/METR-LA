@@ -3,7 +3,9 @@ __pycache__
 *.zip
 test.py
 test.ipynb
-*.ipynb
-metr-la.csv
+# *.ipynb
+# metr-la.csv
 adj_metr-LA.pkl
+*.txt
 data
+raw_data
